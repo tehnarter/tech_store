@@ -1,0 +1,39 @@
+// viewport
+@use "./utils/mixins" as *;
+
+:root {
+  --viewport: 1440; // ширина макета в px
+  --font-main: "Manrope", sans-serif;
+  --font-heading: "Unbounded", sans-serif;
+  --base-font-size: 16; //базовий розмір шрифту  у пікселях
+  --color-primary: #000;
+  --container-padding: 15px;
+  --container-max: 1170px;
+
+  @include tablet {
+    --viewport: 284;
+  }
+}
+
+// fonts
+
+// :root {
+// --font: "HelveticaNeueCyr-Roman";
+// --font-light: "HelveticaNeueCyr-Light";
+// }
+
+// transitions
+
+// :root {
+// --transition: 0.5s ease-in-out;
+// --transition-fast: 0.3 ease-in-out;
+// --transition-slow: 0.8s ease-in-out;
+// --default-ease: cubic-bezier(0.24, 1, 0.36, 1);
+// }
+
+// colors
+
+// :root {
+// --c-pure-black: #000000;
+// --c-pure-white: #ffffff;
+// }
