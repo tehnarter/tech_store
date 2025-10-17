@@ -1,6 +1,6 @@
 <template>
 <div class="wrapper">
-    <Header />
+    <AppHeader />
     <main class="main">
       <div class="container">
        hello

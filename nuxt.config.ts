@@ -72,40 +72,40 @@ export default defineNuxtConfig({
       ],
     },
   },
-  i18n: {
-    lazy: true, // переклади завантажуються динамічно, лише при потребі → економія пам’яті
-    langDir: "locales",// папка, де лежать файли перекладів для кожної локалі
-    strategy: "prefix_except_default",  // prefix - всі локалі отримують префікс у URL: /ua/, /en/, /pl/, /ru/
-    defaultLocale: "ua", // мова за замовчуванням → використовується для root та генерації лінків
-    trailingSlash: true, // додає слеш у кінці URL → /ua/ замість /ua
-    baseUrl: process.env.NUXT_PUBLIC_SITE_URL || "https://example.com",
+  // i18n: {
+  //   lazy: true, // переклади завантажуються динамічно, лише при потребі → економія пам’яті
+  //   langDir: "locales",// папка, де лежать файли перекладів для кожної локалі
+  //   strategy: "prefix_except_default",  // prefix - всі локалі отримують префікс у URL: /ua/, /en/, /pl/, /ru/
+  //   defaultLocale: "ua", // мова за замовчуванням → використовується для root та генерації лінків
+  //   trailingSlash: true, // додає слеш у кінці URL → /ua/ замість /ua
+  //   baseUrl: process.env.NUXT_PUBLIC_SITE_URL || "https://example.com",
 
-    locales: [
-      {
-        code: "ua",
-        iso: "uk-UA",
-        language: "uk",
-        file: "ua.json",
-        name: "Українська",
-        isCatchallLocale: true, //  головна мова, яка отримає hreflang="x-default"
-      },
-      {
-        code: "en",
-        iso: "en-US",
-        language: "en",
-        file: "en.json",
-        name: "English",
-      },
+  //   locales: [
+  //     {
+  //       code: "ua",
+  //       iso: "uk-UA",
+  //       language: "uk",
+  //       file: "ua.json",
+  //       name: "Українська",
+  //       isCatchallLocale: true, //  головна мова, яка отримає hreflang="x-default"
+  //     },
+  //     {
+  //       code: "en",
+  //       iso: "en-US",
+  //       language: "en",
+  //       file: "en.json",
+  //       name: "English",
+  //     },
 
-    ],
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: "i18n_redirected",
-      alwaysRedirect: false, // true завжди примусово редіректити на мову браузера
-      redirectOn: 'root', // тільки редірект з /
-      fallbackLocale: "ua",
-    },
-  },
+  //   ],
+  //   detectBrowserLanguage: {
+  //     useCookie: true,
+  //     cookieKey: "i18n_redirected",
+  //     alwaysRedirect: false, // true завжди примусово редіректити на мову браузера
+  //     redirectOn: 'root', // тільки редірект з /
+  //     fallbackLocale: "ua",
+  //   },
+  // },
   colorMode: {
     preference: "system",
     fallback: "light",
