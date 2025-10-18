@@ -6,7 +6,7 @@
        hello
       </div>
     </main>
-    <Footer />
+    <AppFooter />
   </div>
 </template>
 

@@ -1,181 +1,99 @@
-## Структура папок
+assets
 
-<br/>
+Містить шрифти (fonts) і стилі (styles).
 
-`assets`
+assets/styles
 
-Папка містить папку шрифтів `fonts` та стилів `styles`
+Загальні стилі проєкту.
 
----
+assets/styles/utils
 
-`assets/styles`
+Функціональні SCSS-файли: змінні, міксіни, функції, placeholders.
 
-Файли (не папка `utils`) містять загальні стилі для всього проекту
+❗ Не задавайте в цих файлах жодних стилів.
 
----
+components
 
-`assets/styles/utils`
+Компоненти проєкту.
+Можна зберігати всі разом або групувати за сторінками чи секціями.
+Приклад:
 
-Папка містить лише "функціональні" `.scss`файли. В них не містяться стилі, а лише функції, міксини, scss-змііні. **Ні в якому разі не задавайте будь-яких стилів в цих файлах!**
+components/
+ ├─ main/
+ │   ├─ Hero.vue
+ │   └─ Contact.vue
+ └─ about/
+     ├─ Hero.vue
+     └─ Slider.vue
 
----
 
-`components`
+Nuxt автоматично формує імена компонентів:
+MainHero, MainContact, AboutHero, AboutSlider.
 
-Папка компонентів проекту. Структуру комопнентів можна робитит різною на даний момент. Це значить, що можна класти всі компоненти прямо в цю папку, а можна їх розділяти по папках в залежності від потреб. наприклад, створювати папки для кожної із сторінок чи створити папку для загальних компонентів, які зустрічаються на різних сторінках в різних блоках
+composables
 
-```
-| components/
-  | main/
-     | Hero.vue
-     | Contact.vue
-     | blocks/
-       | Type1.vue
-  | about/
-     | Hero.vue
-     | Slider.vue
-```
+Функції, що перевикористовуються в проєкті.
+Можуть містити Vue API (рефи, хуки).
+Файли з кореня цієї папки імпортуються автоматично.
 
-Якщо створюється така структура, то `nuxt 3` формує назви компонентів починаючи від назви корененовї папки, в якій знаходиться компонент. В показаній вище структурі комопненти матимуть назви `MainHero.vue`, `MainContact.vue`, `MainBlocksType1.vue`, `AboutHero.vue` та `AboutSlider.vue`.
+pages
 
----
+Vue-файли, які формують маршрути:
 
-`composables`
+pages/
+ ├─ index.vue       → '/'
+ ├─ about.vue       → '/about'
+ └─ blog/
+     ├─ index.vue   → '/blog'
+     └─ [slug].vue  → '/blog/:slug'
 
-Папка для різних функцій, які перевикористовються на протязі розробки проекту, або для винесення якоїсь важкої логіки компонента в окремий файл. В цих файлах можна використовувати весь функціонал vue, тобто - використовувати інші `composables`, хуки, рефи та інше. Всі файли з цієї папки автоімортуються `nuxt`, але лише з кореневої папки.
+plugins
 
----
+Файли для реєстрації Nuxt-плагінів.
 
-`pages`
+public
 
-Папка сторінок (роутів) проекту
+Статичні файли: зображення, відео, PDF, robots.txt тощо.
 
-```
-| pages
-  | index.vue   // головна сторінка. роут '/'
-  | about.vue   // роут '/about'
-  | [id].vue    // будь-який роут, але не '/' та не '/about' та інші, які будуть мати
-			          // осмислену назву.
-			          // Приклад: '/dynamic-route', '/another-dynamic-route'
-  | blog/
-     | index.vue   // роут '/blog'
-     | [slug].vue  // динамічний роут '/blog/first-article' чи то '/blog/blablabla'
+server/api
 
-```
+API-ендпоїнти. Детальніше — Nuxt Docs
+.
 
----
+utils
 
-`plugins`
+JS-функціонал, що не використовує Vue API (чистий JavaScript).
+Використовується для допоміжної логіки.
 
-Папка для плагінів
+⚙️ Основні файли
+assets/styles/
 
----
+_css-variables.scss — глобальні CSS-змінні
 
-`public`
+_fonts.scss — підключення шрифтів
 
-Папка для статичних файлів: зображень, відео, документів `.pdf`, та ін... `robots.txt` може лежати тут, якщо треба змінити індексацію сайта
+_general.scss — базові стилі
 
----
+_hovers.scss — класи для hover
 
-`server/api`
+_typography.scss — типографіка
 
-Папка для створення кінцевих точок `api`, якщо таке потрібно. Більш детально на [офіційному сайті](https://nuxt.com/docs/guide/directory-structure/server#server-directory)
+_vue-transitions.scss — анімації для <transition>
 
----
+main.scss — головний файл стилів, імпортується у nuxt.config.ts:
 
-`utils`
+css: ["@/assets/styles/main.scss"]
 
-Як і папка `composables` використовується для створення функціоналу, який можна перевикористовувати. Відмінність від `composables` в тому, що в цій папці можна створювати функціонал, який не використовує `vue` можливості, тобно нативний `js` код.
+assets/styles/utils/
 
-<br/>
-<br/>
-<br/>
+_vars.scss — змінні
 
-## Коротко про деякі файли в шаблоні
+_mixins.scss — міксіни
 
-<br/>
+_functions.scss — функції
 
-### Стилі
+_placeholders.scss — шаблони
 
-`assets/styles/_css-variables.scss` - файл, в якому описуються загальні змінні для проекту
-`assets/styles/_fonts.scss` - піключення шрифтів
-`assets/styles/_general.scss` - загальні стилі для проекту
-`assets/styles/_hovers.scss` - загальні класи ля ховерів на елементи
-`assets/styles/_typography.scss` - класи для текстових елементів
-`assets/styles/_vue-transitions.scss` - класи для `vue <transition>`-анімацій
+_breakpoints.scss — брейкпоінти
 
-`assets/styles/main.scss` - підключення всіх файлів стилів. Цей файл підключається в файлі конфігурації `nuxt.config.ts`
-
-```ts
-  css: [
-    "@/assets/styles/main.scss",
-  ],
-```
-
-<br/>
-
-##### папка `utils`
-
-`assets/styles/utils/_breakpoints.scss` - в цьому файлі визначаютья брекпоінти для `@media` запросів в стилях
-
-`assets/styles/utils/_functions.scss` - файл для `scss`- функцій
-`assets/styles/utils/_mixins.scss` - файл для `scss`-міксінів
-`assets/styles/utils/_placeholders.scss` - файл для шаблонів стилів
-`assets/styles/utils/_vars.scss` - `scss`-змінні
-
-`assets/styles/utils/index.scss` - файл імпорту `scss` функціоналу. Цей файл підключається в файлі конфігурації `nuxt.config.ts`
-
-```ts
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@import "@/assets/styles/utils";',
-        },
-      },
-    },
-  },
-```
-
-<br />
-
-### `.editorconfig` Файл конфігурації `VS Code`
-
-В файлі описані правила для форматування коду в редакторі `VS Code`. Для роботи треба встановити розширення для `VS Code` [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
-<br/>
-
-### `.env` Змінні середовища
-
-`.env` - файл, в якому прописуються змінні середовища, такі як `api`-домен, секретні данні та інше.
-
-Як їх використовувати можна прочитати на [сторінці](https://nuxt.com/docs/guide/going-further/runtime-config)
-<br/>
-
-### `.eslintrc.js` - файл лінтера `ESLint`
-
-Файл конфігураціі `ESLint`. Для роботи в `VS Code` потрібно встановити розширення `ESLint`. Більш детально про роботу лінтера можна почитати [тут](https://eslint.org/)
-<br/>
-
-### `.gitignore`
-
-Список файлів і папок, за якими не повинен слідкувати `git`
-<br/>
-
-### `.npmrc`
-
-Файл налаштування `npm` менеджера. Зараз в ньому прописані дані для завантаження ліцензії `gsap`
-<br/>
-
-### `app.vue`
-
-Стартова точка для `nuxt` проектів. Детальніше про [файл](https://nuxt.com/docs/guide/directory-structure/app)
-<br/>
-
-### `nuxt.config.ts`
-
-Файл конфігурації `nuxt`. [Детальніше](https://nuxt.com/docs/guide/directory-structure/nuxt.config)
-<br />
-
-### `tsconfig.json`
-
-Файл налаштування `TypeScript`
+index.scss — імпортує все вище.
