@@ -2,10 +2,10 @@
   <div class="header__contacts">
     <div class="header__call">Call Us: (00) 1234 5678</div>
     <div class="header__face">
-       <IconsIconFacebook />
+        <SvgoFacebook filled :fontControlled="false"  width="20"  height="20" />
     </div>
     <div class="header__inst">
-      <IconsIconInstagram />
+         <SvgoInstagram filled :fontControlled="false"  width="20"  height="20" />
     </div>
   </div>
 </template>
