@@ -3,7 +3,8 @@
     <AppHeader />
     <main class="main">
       <div class="container">
-       hello
+       <SliderMain />
+       <SliderNewProducts />
       </div>
     </main>
     <AppFooter />
