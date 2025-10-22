@@ -5,6 +5,12 @@
       <div class="container">
        <SliderMain />
        <SliderNewProducts />
+       <ProductSeries />
+        <SearchSeries :series="seriesGL" />
+        <ProductSeries />
+        <SearchSeries :series="seriesIN" />
+        <ProductSeries />
+        <ProductSeries />
       </div>
     </main>
     <AppFooter />
@@ -13,9 +19,18 @@
 
 <script setup>
 
-
-
-
+const seriesGL = [
+  { name: "MSI GS Series" },
+  { name: "MSI GT Series" },
+  { name: "MSI GL Series" },
+  { name: "MSI GE Series" },
+]
+const seriesIN = [
+  { name: "MSI Infinute Series" },
+  { name: "MSI Triden" },
+  { name: "MSI GL Series" },
+  { name: "MSI Nightblade" },
+]
 
 
 </script>
