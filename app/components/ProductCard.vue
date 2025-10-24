@@ -18,8 +18,8 @@ defineProps({
     <div class="card__text">
       {{ cards.text }}
     </div>
-    <div class="card__old-price">{{ cards.old_price }}</div>
-    <div class="card__new-price">{{ cards.new_price }}</div>
+    <div class="card__old-price">{{ cards['oldPrice'] }}</div>
+<div class="card__new-price">{{ cards['newPrice'] }}</div>
     <!-- -->
   </div>
 </template>
@@ -44,6 +44,7 @@ defineProps({
   // .card__stars
 
   &__stars {
+    display: flex;
   }
 
   // .card__text

@@ -1,25 +1,12 @@
 <script setup>
-import { ref, onMounted, computed } from "vue"
-defineProps({
-  card: Array,
-})
-const cards = ref([])
+import { useCardsStore } from '~~/stores/useCardsStore'
 
+const cardsStore = useCardsStore() // ← викликаємо
+const cards = computed(() => cardsStore.allCards)
 const limit = ref(5)
-
 const limitedcards = computed(() => cards.value.slice(0, limit.value))
 
-onMounted(async () => {
-  try {
-    const response = await fetch("https://183d9bd894c8b214.mokky.dev/card")
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`)
-    }
-    cards.value = await response.json()
-  } catch (error) {
-    console.error("Error fetching data:", error)
-  }
-})
+
 </script>
 <template>
   <div class="product-series">

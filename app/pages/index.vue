@@ -6,11 +6,8 @@
        <SliderMain />
        <SliderNewProducts />
        <ProductSeries />
-        <SearchSeries :series="seriesGL" />
-        <ProductSeries />
-        <SearchSeries :series="seriesIN" />
-        <ProductSeries />
-        <ProductSeries />
+       <SearchSeries :series="seriesGL" />
+       <SearchSeries :series="seriesIN" />
       </div>
     </main>
     <AppFooter />

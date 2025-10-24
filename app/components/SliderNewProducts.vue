@@ -1,37 +1,14 @@
 <script setup>
-import { ref, onMounted } from "vue"
-defineProps({
-  card: Array,
-})
-const cards = ref([])
 import { Navigation, A11y } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/vue"
-const modules = [Navigation, A11y]
 import "swiper/css"
 import "swiper/css/navigation"
+const modules = [Navigation, A11y]
+import { useCardsStore } from '~~/stores/useCardsStore'
 
-onMounted(async () => {
-  try {
-    const response = await fetch("https://183d9bd894c8b214.mokky.dev/card")
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`)
-    }
-    cards.value = await response.json()
-  } catch (error) {
-    console.error("Error fetching data:", error)
-  }
-})
-// Функція для обробки події ініціалізації Swiper
-// const onSwiper = (swiper) => {
-//   console.log(swiper)
-// }
+const cardsStore = useCardsStore() // ← викликаємо
+const cards = computed(() => cardsStore.allCards)
 
-// Функція для обробки події зміни слайда
-// const onSlideChange = () => {
-//   console.log("slide change")
-// }
-
-// Підключення необхідних модулів Swiper
 </script>
 <template>
   <div class="new-product">
